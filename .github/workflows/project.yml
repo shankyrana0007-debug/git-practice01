@@ -1,10 +1,10 @@
-name: workflow-1
+name: workflow-2
 on: push
 jobs:
     lint:
      runs-on: ubuntu-latest
 
-      steps: 
+     steps: 
         -name: Get code
          uses: actions/checkout@v4
         -name: install dependencies
