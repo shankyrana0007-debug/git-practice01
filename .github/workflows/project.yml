@@ -13,14 +13,14 @@ jobs:
           run: npm run lint
     Test: 
       runs-on: ubuntu-latest
-       steps: 
+      steps: 
          - name: Test code 
            run: npm run test 
 
     Build: 
       needs: [Test, lint]
       runs-on: ubuntu-latest
-       steps:       
+      steps:       
         - name: Build code
           run: npm run build
         - name: Deploy code
