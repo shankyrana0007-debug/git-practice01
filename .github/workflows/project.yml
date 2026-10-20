@@ -4,7 +4,7 @@ jobs:
     lint:
      runs-on: ubuntu-latest
 
-     steps: 
+      steps: 
         - name: Get code
           uses: actions/checkout@v4
         - name: install dependencies
@@ -18,7 +18,7 @@ jobs:
            run: npm run test 
 
     Build: 
-      needs: Test
+      needs: [Test, lint]
       runs-on: ubuntu-latest
        steps:       
         - name: Build code
