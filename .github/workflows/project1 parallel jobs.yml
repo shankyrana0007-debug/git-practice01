@@ -1,8 +1,8 @@
 name: workflow-1
 on: push
 jobs:
-    lint:
-     runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-latest
 
       steps: 
         -name: Get code
