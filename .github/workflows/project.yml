@@ -1,27 +1,60 @@
+
 name: workflow-3
-on: push
+
+on:
+  push:
+    branches:
+      - master
+
 jobs:
-    lint:
-     runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-     steps: 
-        - name: Get code
-          uses: actions/checkout@v4
-        - name: install dependencies
-          run: npm ci
-        - name: lint
-          run: npm run lint
-    Test: 
-      runs-on: ubuntu-latest
-      steps: 
-         - name: Test code 
-           run: npm run test 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-    Build: 
-      needs: [Test, lint]
-      runs-on: ubuntu-latest
-      steps:       
-        - name: Build code
-          run: npm run build
-        - name: Deploy code
-          run: echo "deploying code"
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint project
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+  build:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
