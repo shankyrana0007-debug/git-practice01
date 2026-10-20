@@ -1,4 +1,4 @@
-name: workflow-2
+name: workflow-3
 on: push
 jobs:
     lint:
@@ -16,8 +16,6 @@ jobs:
        steps: 
          - name: Test code 
            run: npm run test 
-
-
 
     Build: 
       needs: Test
