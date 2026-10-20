@@ -5,15 +5,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-        -name: Get code
-         uses: actions/checkout@v4
-        -name: install dependencies
-         run: npm ci
-        -name: lint
-         run: npm run lint
-        -name: Test code 
-         run: npm run test 
-        -name: Build code
-         run: npm run build
-        -name: Deploy code
-         run: echo "deploying code"
+        - name: Get code
+          uses: actions/checkout@v4
+        - name: install dependencies
+          run: npm ci
+        - name: lint
+          run: npm run lint
+        - name: Test code 
+          run: npm run test 
+        - name: Build code
+          run: npm run build
+        - name: Deploy code
+          run: echo "deploying code"
