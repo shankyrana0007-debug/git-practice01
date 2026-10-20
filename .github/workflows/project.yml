@@ -13,6 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+<<<<<<< HEAD
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -58,3 +59,26 @@ jobs:
 
       - name: Build project
         run: npm run build
+=======
+     steps: 
+        - name: Get code
+          uses: actions/checkout@v4
+        - name: install dependencies
+          run: npm ci
+        - name: lint
+          run: npm run lint
+    Test: 
+      runs-on: ubuntu-latest
+       steps: 
+         - name: Test code 
+           run: npm run test 
+
+    Build: 
+      needs: [Test, lint]
+      runs-on: ubuntu-latest
+       steps:       
+        - name: Build code
+          run: npm run build
+        - name: Deploy code
+          run: echo "deploying code"
+>>>>>>> parent of fcda151 (mew)
